@@ -5,6 +5,8 @@ screen = pg.display.set_mode((600, 400))
 clock = pg.time.Clock()
 running = True
 
+active_bullets = []
+
 while running:
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -13,6 +15,8 @@ while running:
     screen.fill("black")
 
     # game rendering done here
+    active_bullets.append()
+
 
     pg.display.flip()
     
