@@ -16,9 +16,19 @@ class Player:
     def draw(self, screen):
         pg.draw.circle(screen, "green", self.position, self.size)
     
-    def clamp_player(self, screen):
-        self.position.x = max(self.size, min(self.position.x, screen.get_width() - self.size))
-        self.position.y = max(self.size, min(self.position.y, screen.get_height() - self.size))
+    def clamp_player(self, game_screen):
+        self.position.x = max(self.size, min(self.position.x, game_screen.get_width() - self.size))
+        self.position.y = max(self.size, min(self.position.y, game_screen.get_height() - self.size))
 
     def get_center(self):
         return self.position.x + self.size / 2, self.position.y + self.size / 2
+    
+    def player_update(self, delta):
+        if pg.key.get_pressed()[pg.K_LEFT] or pg.key.get_pressed()[pg.K_a]:
+            self.position.x -= self.speed * delta
+        if pg.key.get_pressed()[pg.K_RIGHT] or pg.key.get_pressed()[pg.K_d]:
+            self.position.x += self.speed * delta 
+        if pg.key.get_pressed()[pg.K_DOWN] or pg.key.get_pressed()[pg.K_s]:
+            self.position.y += self.speed * delta    
+        if pg.key.get_pressed()[pg.K_UP] or pg.key.get_pressed()[pg.K_w]:
+            self.position.y -= self.speed * delta

@@ -19,19 +19,13 @@ while running:
         if event.type == pg.QUIT:
             running = False
 
-    if pg.key.get_pressed()[pg.K_LEFT] or pg.key.get_pressed()[pg.K_a]:
-        player.position.x -= player.speed * dt
-    if pg.key.get_pressed()[pg.K_RIGHT] or pg.key.get_pressed()[pg.K_d]:
-        player.position.x += player.speed * dt 
-    if pg.key.get_pressed()[pg.K_DOWN] or pg.key.get_pressed()[pg.K_s]:
-        player.position.y += player.speed * dt    
-    if pg.key.get_pressed()[pg.K_UP] or pg.key.get_pressed()[pg.K_w]:
-        player.position.y -= player.speed * dt
+    player.player_update(dt)
+    
 
-    player.clamp_player(screen=screen)
+    player.clamp_player(screen)
     # game rendering done here
     screen.fill("black")
-    player.draw(screen=screen)
+    player.draw(screen)
     pg.display.flip()
 
 pg.quit()
